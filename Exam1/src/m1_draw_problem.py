@@ -17,6 +17,7 @@ def main():
     test_draw_a_picture()
 
 
+
 def test_draw_a_picture():
     ###############################################################################
     #   This method tests draw_a_picture
@@ -44,7 +45,6 @@ def test_draw_a_picture():
     print('###################################################')
     draw_a_picture(point2, n, 'green', test_window)
     test_window.close_on_mouse_click()
-
 
 ###############################################################################
 # def draw_a_picture(point, n, color, window):
@@ -94,7 +94,109 @@ def test_draw_a_picture():
 #
 #
 
+def draw_row_of_circles(n, starting_point, color, window):
+    """
+    What comes in:  The four arguments are:
+      -- A positive integer n.
+      -- An rg.Point.
+      -- A color appropriate for rosegraphics (e.g. 'red')
+      -- An rg.RoseWindow.
+    What goes out:  Nothing (i.e., None).
+    Side effects:
+      Draws  n  rg.Circle objects in a row,
+      all on the given rg.RoseWindow, such that:
+        -- The first rg.Circle is centered at the given starting_point.
+        -- Each rg.Circle just touches the previous one (to its left).
+        -- Each rg.Circle has radius 20.
+        -- Each rg.Circle is filled with the given color.
+      Must  ** render **     but   ** NOT close **   the rg.RoseWindow.
+
+     Type hints:
+      :type n:               int
+      :type starting_point:  rg.Point
+      :type color:           str
+      :type window:          rg.RoseWindow
+    """
+    # -------------------------------------------------------------------------
+    # The example below shows one way to solve problems using
+    #   HELPER variables (aka AUXILIARY variables)
+    # In this approach:
+    #  1. You determine all the variables that you need
+    #       to construct/draw whatever the problem calls for.
+    #       We call these HELPER variables.
+    #  2. You initialize them BEFORE the loop, choosing values that
+    #       make them just right for constructing and drawing the
+    #       FIRST object to be drawn, in the FIRST time through the loop.
+    #       For example,   x = starting_point.x   in the example below.
+    #  3. You determine how many times the loop should run
+    #       (generally, however many objects you want to draw)
+    #       and write the FOR statement for the loop.
+    #       For example,    for _ in range(n):  in the example below.
+    #  4. Inside the loop you write the statements to construct and
+    #       draw the FIRST object to be drawn, using your helper
+    #       variables.  This is easy because you chose just the right
+    #       values for those helper variables for this FIRST object.
+    #  5. Test: Make sure the FIRST object appears.
+    #       (It will be redrawn many times, that is OK).
+    #  6. Add code at the BOTTOM of the loop that changes the helper
+    #       variables appropriately for the NEXT time through the loop.
+    #       For example,   x = x + diameter   in the example below.
+    #  7. Test and fix as needed.
+    #
+    # Many students (and professionals) find this technique less
+    # error-prone that using the loop variable to do all the work.
+    # -------------------------------------------------------------------------
+
+    radius = 20
+    diameter = 2 * radius
+
+    x = starting_point.x  # Initialize x and y BEFORE the loop.  Choose ...
+    y = starting_point.y  # ... values that make the FIRST object easy to draw.
+
+    for _ in range(n):  # Loop that does NOT use its index variable
+
+        # ---------------------------------------------------------------------
+        # Construct the relevant object(s),
+        # based on the current x, y and other variables.
+        # ---------------------------------------------------------------------
+        center = rg.Point(x, y)
+        circle = rg.Circle(center, radius)
+        circle.fill_color = color
+
+        # Attach the object(s) to the window.
+        circle.attach_to(window)
+
+        # ---------------------------------------------------------------------
+        # Increment x (and in other problems, other variables)
+        # for the thing(s) to draw in the NEXT iteration of the loop.
+        # ---------------------------------------------------------------------
+        x = x + diameter
+
+    window.render()
+
+
+# -----------------------------------------------------------------------------
+# Calls  main  to start the ball rolling.
+# -----------------------------------------------------------------------------
+main()
 def draw_a_picture(point, n, color, window):
+    radius = 20
+    diameter = 2 * radius
+
+    x = n.x
+    y = n.y
+
+    for _ in range(point):
+
+        center = rg.Point(x, y)
+        circle = rg.Circle(center, radius)
+        circle.fill_color = color
+
+        circle.attach_to(window)
+
+        x = x + diameter
+
+    window.render()
 
     return
 

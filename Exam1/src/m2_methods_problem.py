@@ -17,7 +17,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 1  READ the doc-string for the is_prime function defined below.
+# done 1  READ the doc-string for the is_prime function defined below.
 # You do NOT need to understand its implementations,
 # just its specification (per the doc-string).
 # You should  ** CALL **  functions as needed in implementing the
@@ -58,7 +58,7 @@ def is_prime(n):
 
 def test_count_primes():
     ###############################################################################
-    # TODO: 2  READ the doc-string for the count_primes function below,
+    # done: 2  READ the doc-string for the count_primes function below,
     #   but DO NOT begin coding.
     # After you have READ this, change its _TODO_ to DONE.
     ###############################################################################
@@ -114,12 +114,23 @@ def count_primes(m,n):
     #     you must provide the
     #     second and third examples above
     """
+    total = 0
+    for k in range(2, m, n // 2 + 1):
+
+        if n % k == 0:
+            return False
+
+    return True
+
+
+
+
+
     ################################################################################
     #   TODO: 4. Write the function count_primes(m,n) below here
     # After you have coded and tested, change its _TODO_ to DONE.
     ################################################################################
 
-    return
 
 
 def test_multiply_primes():
