@@ -24,7 +24,6 @@ def main():
 # other functions.  After you have READ this, change its _TODO_ to DONE.
 ###############################################################################
 
-
 def is_prime(n):
     """
     What comes in:  An integer n >= 1.
@@ -115,12 +114,12 @@ def count_primes(m,n):
     #     second and third examples above
     """
     total = 0
-    for k in range(2, m, n // 2 + 1):
+    for k in range(m,n+1):
+        if is_prime(k) is True:
+            total = total + 1
+            print(k)
 
-        if n % k == 0:
-            return False
-
-    return True
+    return total
 
 
 
@@ -183,6 +182,16 @@ def multiply_primes(m,n):
     #   TODO: 6. Write the function multiply_primes(m,n) below here
     # After you have coded and tested, change this _TODO_ to DONE.
     ###############################################################################
+    total = 1
+    for k in range(m, n+1):
+        if is_prime(k) is True:
+            total = total*k
+
+    if count_primes(m,n) ==0:
+        total = 0
+
+    return total
+
 
 
 main()

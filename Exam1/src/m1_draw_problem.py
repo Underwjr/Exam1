@@ -178,27 +178,18 @@ def draw_row_of_circles(n, starting_point, color, window):
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
-main()
+
 def draw_a_picture(point, n, color, window):
-    radius = 20
-    diameter = 2 * radius
+    circle = rg.Circle(point, 50)
+    circle.fill_color = color
+    circle.attach_to(window)
 
-    x = n.x
-    y = n.y
-
-    for _ in range(point):
-
-        center = rg.Point(x, y)
-        circle = rg.Circle(center, radius)
-        circle.fill_color = color
-
-        circle.attach_to(window)
-
-        x = x + diameter
-
-    window.render()
-
-    return
+    for k in range(n):
+        point1 = rg.Point(point.x + 25*k, point.y + 15*k)
+        circle1 = rg.Circle(point1, 50)
+        circle1.fill_color=color
+        circle1.attach_to(window)
+        window.render(0.5)
 
 
 main()
